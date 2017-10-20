@@ -4,6 +4,7 @@ module TreasureGame
   describe ClumsyPlayer do
     before do
       @player = ClumsyPlayer.new("klutz")
+      $stdout = StringIO.new
     end
 
     it "only gets half the point value for each treasure" do
@@ -34,6 +35,7 @@ module TreasureGame
         @initial_health = 100
         @boost_factor = 5
         @player = ClumsyPlayer.new("klutz", @initial_health, @boost_factor)
+        $stdout = StringIO.new
       end
 
       it "has a boost factor" do

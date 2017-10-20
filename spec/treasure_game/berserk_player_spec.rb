@@ -6,6 +6,7 @@ module TreasureGame
     before do
       @initial_health = 50
       @player = BerserkPlayer.new("berserker", @initial_health)
+      $stdout = StringIO.new
     end
 
     it "does not go berserk when w00ted up to 5 times" do
