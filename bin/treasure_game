@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/treasure_game/game'
+require_relative '../lib/treasure_game/clumsy_player'
+require_relative  '../lib/treasure_game/berserk_player'
+
+knuckleheads = TreasureGame::Game.new("knuckleheads")
+default_player_file = File.join(File.dirname(__FILE__), 'players.csv')
+knuckleheads.load_players(ARGV.shift || default_player_file)
+clumsy_player = TreasureGame::ClumsyPlayer.new("klutz", 105, 10)
+berserk_player = TreasureGame::BerserkPlayer.new("berserker", 50)
+knuckleheads.add_player(clumsy_player)
+knuckleheads.add_player(berserk_player)
+
+loop do
+  puts "\nHow many game rounds? ('quit' to exit)"
+  answer = gets.chomp.downcase
+  case answer
+  when /^\d+$/
+    knuckleheads.play(answer.to_i)
+  when "quit", "exit"
+    knuckleheads.print_stats
+    break
+  else
+    puts "Please enter a number or 'quit'"
+  end
+end
+
+knuckleheads.save_high_scores
