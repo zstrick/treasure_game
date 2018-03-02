@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = "treasure_adventure_game"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.author       = "Zack Strickland"
   s.email        = "zack.a.strickland@gmail.com"
   s.summary      = "A fun treasure game."
